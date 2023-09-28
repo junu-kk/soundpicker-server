@@ -1,23 +1,21 @@
 import {
-  IsBoolean,
   IsEmail,
+  IsEnum,
   IsOptional,
   IsString,
   IsStrongPassword,
 } from 'class-validator'
 
+enum UserInfo {
+  Email = 'email',
+  Password = 'password',
+  Nickname = 'nickname',
+}
+
 export class CreateUserQueryDto {
-  @IsBoolean()
+  @IsEnum(UserInfo)
   @IsOptional()
-  verifyEmailOnly?: boolean
-
-  @IsBoolean()
-  @IsOptional()
-  verifyNicknameOnly?: boolean
-
-  @IsBoolean()
-  @IsOptional()
-  verifyPasswordOnly?: boolean
+  verifyOnly?: UserInfo
 }
 
 export class CreateUserBodyDto {
