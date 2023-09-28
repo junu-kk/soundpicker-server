@@ -3,15 +3,15 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ConfigModule } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
-import { UserModule } from './user/user.module'
-import { TestModule } from './test/test.module'
+import { UsersModule } from './users/users.module'
+import { TestsModule } from './tests/tests.module'
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.DB_URI),
-    UserModule,
-    TestModule,
+    UsersModule,
+    TestsModule,
   ], // import ConfigModule first to use dotenv
   controllers: [AppController],
   providers: [AppService],
