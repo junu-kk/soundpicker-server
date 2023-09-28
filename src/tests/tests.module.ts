@@ -7,4 +7,4 @@ import { Test, TestSchema } from './test.schema'
     MongooseModule.forFeature([{ name: Test.name, schema: TestSchema }]),
   ],
 })
-export class TestModule {}
+export class TestsModule {}
