@@ -1,4 +1,11 @@
-import { IsArray, IsNumber, IsOptional, IsString, IsUrl } from 'class-validator'
+import {
+  IsArray,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUrl,
+  ValidateNested,
+} from 'class-validator'
 
 export class CreateTestDto {
   @IsString()
@@ -11,6 +18,7 @@ export class CreateTestDto {
   description: string
 
   @IsArray()
+  @ValidateNested({ each: true })
   questions: Question[]
 }
 

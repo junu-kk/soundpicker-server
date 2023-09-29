@@ -9,16 +9,16 @@ export class TestsController {
 
   @Get('/')
   async getTests(@Query() query: GetTestsQueryDto) {
-    return { query }
+    return this.testsService.getTests(query)
   }
 
   @Get('/:testId')
   async getTest(@Param('testId') testId: string) {
-    return { testId }
+    return this.testsService.getTest(testId)
   }
 
   @Post('/')
   async createTest(@Body() body: CreateTestDto) {
-    return { body }
+    return this.testsService.createTest(body)
   }
 }
