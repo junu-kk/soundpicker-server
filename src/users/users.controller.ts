@@ -12,7 +12,7 @@ export class UsersController {
   @Public()
   @Post('/')
   async createUser(@Body() body: CreateUserBodyDto) {
-    return { body }
+    return this.usersService.createUser(body)
   }
 
   @Get('/:userId')
