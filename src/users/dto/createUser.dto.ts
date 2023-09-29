@@ -1,9 +1,5 @@
 import { IsNotEmpty, IsString, IsStrongPassword } from 'class-validator'
 
-enum UserInfo {
-  Nickname = 'nickname',
-  Password = 'password',
-}
 export class CreateUserBodyDto {
   @IsString()
   @IsNotEmpty()
