@@ -1,6 +1,6 @@
 import { IsString } from 'class-validator'
 
-export class CreateTokenDto {
+export class LoginDto {
   @IsString()
   nickname: string
 
