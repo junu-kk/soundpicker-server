@@ -1,28 +1,12 @@
-import {
-  IsEmail,
-  IsEnum,
-  IsOptional,
-  IsString,
-  IsStrongPassword,
-} from 'class-validator'
+import { IsNotEmpty, IsString, IsStrongPassword } from 'class-validator'
 
 enum UserInfo {
-  Email = 'email',
-  Password = 'password',
   Nickname = 'nickname',
+  Password = 'password',
 }
-
-export class CreateUserQueryDto {
-  @IsEnum(UserInfo)
-  @IsOptional()
-  verifyOnly?: UserInfo
-}
-
 export class CreateUserBodyDto {
-  @IsEmail()
-  email: string
-
   @IsString()
+  @IsNotEmpty()
   nickname: string
 
   @IsStrongPassword({
