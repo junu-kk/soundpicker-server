@@ -1,4 +1,4 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { MongooseModule, Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument, Types } from 'mongoose'
 
 @Schema({ _id: false })
@@ -44,3 +44,6 @@ export class Test {
 
 export type TestDocument = HydratedDocument<Test>
 export const TestSchema = SchemaFactory.createForClass(Test)
+export const TestDBModule = MongooseModule.forFeature([
+  { name: Test.name, schema: TestSchema },
+])
