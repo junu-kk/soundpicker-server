@@ -3,11 +3,13 @@ import { UsersService } from './users.service'
 import { ParseObjectIdPipe } from '../common/pipes/parseObjectId.pipe'
 import { CreateTokenDto } from './dto/createToken.dto'
 import { CreateUserBodyDto } from './dto/createUser.dto'
+import { Public } from '../auth/public.decorator'
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @Public()
   @Post('/')
   async createUser(@Body() body: CreateUserBodyDto) {
     return { body }
@@ -18,6 +20,7 @@ export class UsersController {
     return { userId }
   }
 
+  @Public()
   @Post('/:userId/tokens')
   async createToken(
     @Param('userId', ParseObjectIdPipe) userId: string,
