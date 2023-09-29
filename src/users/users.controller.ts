@@ -1,19 +1,16 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { UsersService } from './users.service'
 import { ParseObjectIdPipe } from '../common/pipes/parseObjectId.pipe'
-import { CreateUserQueryDto } from './dto/createUser.dto'
 import { CreateTokenDto } from './dto/createToken.dto'
+import { CreateUserBodyDto } from './dto/createUser.dto'
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('/')
-  async createUser(
-    @Query() query: CreateUserQueryDto,
-    @Body() body: object, // validate CreateUserBodyDto manually
-  ) {
-    return { query, body }
+  async createUser(@Body() body: CreateUserBodyDto) {
+    return { body }
   }
 
   @Get('/:userId')
