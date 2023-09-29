@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common'
 import { TestsService } from './tests.service'
 import { GetTestsQueryDto } from './dto/getTests.dto'
-import { ParseObjectIdPipe } from '../common/pipes/parseObjectId.pipe'
 import { CreateTestDto } from './dto/createTest.dto'
 
 @Controller('tests')
@@ -14,7 +13,7 @@ export class TestsController {
   }
 
   @Get('/:testId')
-  async getTest(@Param('testId', ParseObjectIdPipe) testId: string) {
+  async getTest(@Param('testId') testId: string) {
     return { testId }
   }
 
