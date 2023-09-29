@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose'
 import { User } from './schemas/user.schema'
 import { Model } from 'mongoose'
 import { CreateUserBodyDto } from './dto/createUser.dto'
+import { TokenPayloadDto } from '../auth/dto/tokenPayload.dto'
 
 @Injectable()
 export class UsersService {
@@ -24,8 +25,9 @@ export class UsersService {
     const { _id } = await this.userModel.create({
       nickname,
       hashedPassword: password,
+      salt: '',
     })
 
-    return { _id, nickname }
+    return new TokenPayloadDto({ _id, nickname })
   }
 }
