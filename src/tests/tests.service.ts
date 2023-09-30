@@ -17,7 +17,7 @@ export class TestsService {
     const { testCategoryId, userId, page, size } = dto
     const filter = {}
     if (testCategoryId) {
-      filter['testCategoryId'] = testCategoryId
+      filter['testCategoryId'] = new Types.ObjectId(testCategoryId)
     }
     if (userId) {
       filter['userId'] = new Types.ObjectId(userId)
