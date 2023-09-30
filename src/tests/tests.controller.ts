@@ -2,6 +2,8 @@ import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common'
 import { TestsService } from './tests.service'
 import { GetTestsQueryDto } from './dto/getTests.dto'
 import { CreateTestDto } from './dto/createTest.dto'
+import { ReqUser } from '../common/decorators/reqUser.decorator'
+import { TokenPayloadDto } from '../auth/dto/tokenPayload.dto'
 
 @Controller('tests')
 export class TestsController {
@@ -18,7 +20,10 @@ export class TestsController {
   }
 
   @Post('/')
-  async createTest(@Body() body: CreateTestDto) {
-    return this.testsService.createTest(body)
+  async createTest(
+    @ReqUser() user: TokenPayloadDto,
+    @Body() body: CreateTestDto,
+  ) {
+    return this.testsService.createTest(user, body)
   }
 }
